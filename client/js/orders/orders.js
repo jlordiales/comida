@@ -1,12 +1,7 @@
 var orders = angular.module('orders', ['ngRoute', 'lbServices', 'ngMaterial']);
 
 orders.controller('OrdersController', function ($scope, $interval, Order) {
-    var isForToday = function (order) {
-            var orderDate = new Date(order.date).toString();
-            var today = moment().startOf('day').toDate().toString();
-            return orderDate === today
-        },
-        isOpen = function (order) {
+    var isOpen = function (order) {
             return moment().isBefore(moment(order.closingTime));
         },
         progress = function (start, end) {
@@ -24,11 +19,11 @@ orders.controller('OrdersController', function ($scope, $interval, Order) {
 
     Order.query({'filter[include]': 'restaurant'}, function (orders) {
         $scope.openOrders = _.filter(orders, function (order) {
-            return isForToday(order) && isOpen(order);
+            return isOpen(order);
         });
 
         $scope.closedOrders = _.filter(orders, function (order) {
-            return isForToday(order) && !isOpen(order);
+            return !isOpen(order);
         });
 
     });

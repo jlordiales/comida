@@ -35,3 +35,4 @@ node_modules
 
 client/bower_components
 mongodb
+.vagrant/

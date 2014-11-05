@@ -33,6 +33,14 @@ node_modules
 .jshintrc
 .npmignore
 
-client/bower_components
 mongodb
 .vagrant/
+mongod.lock
+local.0
+local.ns
+journal/
+tmp
+
+server/datasources.production.json
+server/datasources.local.json
+newrelic.js

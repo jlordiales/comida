@@ -1,0 +1,1 @@
+exports.config = {app_name : ['comida-app'],license_key :'undefined',logging : { level : 'info' }};
